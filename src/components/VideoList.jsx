@@ -15,12 +15,13 @@ import VideoListEntry from './VideoListEntry.js';
 // }
 
 var VideoList = (props) => {
-  console.log(props.videos);
+  console.log('props', props);
+  console.log('this', this);
 
   return (
     <div className="video-list">
       {/* <div><h5><em>videoListEntry</em>{this.props.data}</h5></div> */}
-      {props.videos.map(video => <VideoListEntry video={video} />)}
+      {props.videos.map(video => <VideoListEntry video={video} func={props.func}/>)}
     </div>
   );
 };
