@@ -10,10 +10,6 @@ var searchYouTube = (query, callback) => {
   console.log('query', query);
   console.log('callback', callback);
 
-  // $.ajaxPrefilter(function (settings, _, jqXHR) {
-  //   jqXHR.setRequestHeader('Authorization', API_KEY);
-  // });
-
   $.ajax({
     url: 'https://app-hrsei-api.herokuapp.com/api/recastly/videos',
     type: 'GET',

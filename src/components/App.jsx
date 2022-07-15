@@ -6,17 +6,26 @@ import searchYouTube from '../lib/searchYouTube.js';
 class App extends React.Component {
   constructor(props) {
     super(props);
+    var result = searchYouTube('', function(data) {
+      return data;
+    });
+
     this.state = {
-      allVideos: exampleVideoData,
+      allVideos: [],
       chosenVideo: exampleVideoData[0]
     };
+    console.log('constructor this.state', this.state);
   }
 
   componentDidMount() {
-    searchYouTube('cats', function(data) {
-      console.log('exampleVideoData', exampleVideoData)
-      console.log('data', data)
-    });
+    // searchYouTube('cats', function(data) {
+    //   console.log('data', data);
+    //   console.log('this compenentdidmount', this)
+    //   for (var i = 0; i < data.length; i++) {
+    //     this.state.allVideos.push(data[i]);
+    //   }
+    //   // this.state.allVideos.push(data);
+    // });
   }
 
   onListItemClick(video) {
@@ -28,6 +37,13 @@ class App extends React.Component {
   }
 
   render() {
+    searchYouTube('cats', function(data) {
+      console.log('data', data);
+      console.log('this compenentdidmount', this)
+      for (var i = 0; i < data.length; i++) {
+        this.state.allVideos.push(data[i]);
+      }
+    });
     return (
       <div>
         <nav className="navbar">

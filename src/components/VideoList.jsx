@@ -1,4 +1,5 @@
 import VideoListEntry from './VideoListEntry.js';
+import searchYouTube from '../lib/searchYouTube.js';
 // class VideoList extends React.Component {
 //   constructor(props) {
 //     super(props);
@@ -15,7 +16,7 @@ import VideoListEntry from './VideoListEntry.js';
 // }
 
 var VideoList = (props) => {
-  // console.log('props', props);
+  console.log('props', props);
   // console.log('this', this);
 
   return (
