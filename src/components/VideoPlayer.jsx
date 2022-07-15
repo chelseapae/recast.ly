@@ -1,7 +1,7 @@
 
 
 var VideoPlayer = (props) => {
-  console.log('VideoPlayer props', props.video);
+  // console.log('VideoPlayer props', props.video);
   // var url = props.video.id.videoId;
   return (
     <div className="video-player">

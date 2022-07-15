@@ -15,8 +15,8 @@ import VideoListEntry from './VideoListEntry.js';
 // }
 
 var VideoList = (props) => {
-  console.log('props', props);
-  console.log('this', this);
+  // console.log('props', props);
+  // console.log('this', this);
 
   return (
     <div className="video-list">
