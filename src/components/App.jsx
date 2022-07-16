@@ -2,6 +2,7 @@ import exampleVideoData from '../data/exampleVideoData.js';
 import VideoList from './VideoList.js';
 import VideoPlayer from './VideoPlayer.js';
 import searchYouTube from '../lib/searchYouTube.js';
+import Search from './Search.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -14,7 +15,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    searchYouTube('query', (data) => {
+    searchYouTube('dog', (data) => {
       this.setState({
         allVideos: data
       });
@@ -27,12 +28,30 @@ class App extends React.Component {
     });
   }
 
+  handleSearchChange(value) {
+    console.log(value);
+    searchYouTube(value, (data) => {
+      this.setState({
+        allVideos: data
+      });
+    });
+
+    $('.form-control').on('keyup change', function(event) {
+      clearTimeout(debounceTimeout);
+      debounceTimeout = setTimeout(searchYouTube(value, (data) => {
+        this.setState({
+          allVideos: data
+        });
+      }), 500);
+    });
+  }
+
   render() {
     return (
       <div>
         <nav className="navbar">
           <div className="col-md-6 offset-md-3">
-            <div><h5><em>search</em> view goes here</h5></div>
+            <div><h5><em>search</em><Search func={this.handleSearchChange.bind(this)}/></h5></div>
           </div>
         </nav>
         <div className="row">
