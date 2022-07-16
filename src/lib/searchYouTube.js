@@ -19,7 +19,9 @@ var searchYouTube = (query, callback) => {
     // success: function(data) {
     //   console.log('success', data);
     // },
-    success: callback,
+    success: function(data) {
+      callback(data);
+    },
     error: function(error) {
       console.log('searchYouTube: Failed to fetch videos array', error);
     }

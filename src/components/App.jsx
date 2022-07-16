@@ -6,44 +6,28 @@ import searchYouTube from '../lib/searchYouTube.js';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    var result = searchYouTube('', function(data) {
-      return data;
-    });
 
     this.state = {
       allVideos: [],
       chosenVideo: exampleVideoData[0]
     };
-    console.log('constructor this.state', this.state);
   }
 
   componentDidMount() {
-    // searchYouTube('cats', function(data) {
-    //   console.log('data', data);
-    //   console.log('this compenentdidmount', this)
-    //   for (var i = 0; i < data.length; i++) {
-    //     this.state.allVideos.push(data[i]);
-    //   }
-    //   // this.state.allVideos.push(data);
-    // });
+    searchYouTube('query', (data) => {
+      this.setState({
+        allVideos: data
+      });
+    });
   }
 
   onListItemClick(video) {
-    // console.log('video', video);
-    // console.log('searchYouTube', searchYouTube());
     this.setState({
       chosenVideo: video
     });
   }
 
   render() {
-    searchYouTube('cats', function(data) {
-      console.log('data', data);
-      console.log('this compenentdidmount', this)
-      for (var i = 0; i < data.length; i++) {
-        this.state.allVideos.push(data[i]);
-      }
-    });
     return (
       <div>
         <nav className="navbar">
